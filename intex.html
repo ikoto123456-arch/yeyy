@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Divu 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#fff5fb;
+  color:#5b315b;
+  overflow-x:hidden;
+}
+
+/* OPENING */
+
+#opening{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at 20% 20%,#ffd5eb,transparent 30%),
+    radial-gradient(circle at 80% 80%,#d9c5ff,transparent 30%),
+    linear-gradient(135deg,#ffb6d9,#d9b5ff);
+  transition:opacity 1s ease,visibility 1s ease;
+}
+
+#opening.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.opening-content{
+  padding:30px;
+}
+
+.opening-content h1{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(45px,10vw,90px);
+  color:white;
+  text-shadow:0 5px 20px rgba(117,45,117,.25);
+}
+
+.opening-content p{
+  color:white;
+  margin:15px 0 30px;
+}
+
+.proceed-btn{
+  border:none;
+  padding:17px 35px;
+  border-radius:50px;
+  background:white;
+  color:#c45aa5;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(90,30,100,.2);
+}
+
+/* FLOWERS */
+
+.lily{
+  position:fixed;
+  top:-100px;
+  z-index:10000;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  0%{
+    transform:translateY(-100px) rotate(0);
+    opacity:0;
+  }
+  10%{opacity:1;}
+  100%{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* GENERAL */
+
+section{
+  padding:90px 20px;
+  text-align:center;
+}
+
+.section-title{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(35px,7vw,60px);
+  background:linear-gradient(90deg,#ff5ca8,#9a6cff,#ff6bb5);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:15px;
+}
+
+.section-subtitle{
+  color:#8c648c;
+  margin-bottom:45px;
+}
+
+/* INTRO */
+
+#intro{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at top left,#ffe0ef,transparent 35%),
+    radial-gradient(circle at bottom right,#e6d7ff,transparent 35%),
+    #fff7fc;
+}
+
+.intro-content{
+  max-width:800px;
+}
+
+.intro-content h2{
+  font-family:'Pacifico',cursive;
+  font-size:clamp(40px,8vw,75px);
+  background:linear-gradient(90deg,#ff5ca8,#925cf4);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.intro-content p{
+  font-size:17px;
+  line-height:1.8;
+  margin-top:20px;
+}
+
+/* CARDS */
+
+.cards-container{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.flip-card{
+  height:260px;
+  perspective:1000px;
+  cursor:pointer;
+}
+
+.flip-inner{
+  width:100%;
+  height:100%;
+  position:relative;
+  transition:transform .8s;
+  transform-style:preserve-3d;
+}
+
+.flip-card.flipped .flip-inner{
+  transform:rotateY(180deg);
+}
+
+.card-front,
+.card-back{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(150,80,150,.15);
+}
+
+.card-front{
+  background:linear-gradient(135deg,#ffc2df,#d7c3ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card-front .placeholder{
+  font-size:65px;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+  padding:25px;
+  background:linear-gradient(135deg,#fff0f8,#f0e8ff);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.card-back h3{
+  background:linear-gradient(90deg,#ff4fa3,#8e63ed);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:12px;
+}
+
+.card-back p{
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* CONFETTI */
+
+.confetti{
+  position:fixed;
+  pointer-events:none;
+  z-index:5000;
+  animation:confettiFall 2.5s ease-out forwards;
+}
+
+@keyframes confettiFall{
+  0%{
+    transform:translate(0,0) rotate(0) scale(1);
+    opacity:1;
+  }
+
+  100%{
+    transform:
+      translate(var(--x),var(--y))
+      rotate(720deg)
+      scale(.3);
+    opacity:0;
+  }
+}
+
+/* LETTER */
+
+#letter-section{
+  background:linear-gradient(135deg,#fff5fb,#f5edff);
+}
+
+/* FIXED ENVELOPE */
+
+.envelope-wrapper{
+  width:320px;
+  height:220px;
+  margin:60px auto;
+  position:relative;
+  cursor:pointer;
+  z-index:1;
+}
+
+.envelope{
+  position:absolute;
+  inset:0;
+  background:#ff9fc9;
+  border-radius:8px;
+  box-shadow:0 15px 35px rgba(150,70,120,.2);
+  z-index:3;
+  overflow:visible;
+}
+
+.envelope::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:#ffb4d5;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+  transform-origin:top;
+  transition:transform .8s;
+  z-index:5;
+}
+
+.envelope-wrapper.open .envelope::before{
+  transform:rotateX(180deg);
+}
+
+.envelope-heart{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  font-size:50px;
+  z-index:6;
+}
+
+/* LETTER STAYS HIDDEN */
+
+.letter-paper{
+  position:absolute;
+  width:290px;
+  max-height:70vh;
+  overflow-y:auto;
+  left:15px;
+  bottom:15px;
+  background:#fffdfd;
+  border-radius:12px;
+  padding:25px;
+  text-align:left;
+  box-shadow:0 10px 30px rgba(100,50,100,.2);
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(0);
+  transition:opacity .5s ease,transform .8s ease,visibility .5s;
+  z-index:2;
+}
+
+.envelope-wrapper.open .letter-paper{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(-230px);
+}
+
+.letter-paper h2{
+  font-family:'Pacifico',cursive;
+  text-align:center;
+  background:linear-gradient(90deg,#ff55a8,#9567ef);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:20px;
+}
+
+.letter-paper p{
+  font-size:13px;
+  line-height:1.8;
+  margin-bottom:15px;
+}
+
+/* MUSIC */
+
+.music-box{
+  max-width:500px;
+  margin:auto;
+  padding:30px;
+  border-radius:30px;
+  background:rgba(255,255,255,.75);
+  box-shadow:0 15px 40px rgba(120,70,150,.12);
+}
+
+.music-icon{
+  font-size:60px;
+  margin-bottom:15px;
+}
+
+.music-box h3{
+  background:linear-gradient(90deg,#ff58aa,#8e63ed);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:15px;
+}
+
+.music-btn{
+  border:none;
+  background:linear-gradient(90deg,#ff6caf,#9a72f5);
+  color:white;
+  padding:12px 25px;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+/* MAZE */
+
+.maze-box{
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+  border-radius:30px;
+  background:white;
+  box-shadow:0 15px 40px rgba(100,60,130,.15);
+}
+
+#maze{
+  width:360px;
+  height:360px;
+  max-width:100%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  grid-template-rows:repeat(8,1fr);
+  gap:3px;
+  background:#d9c5ff;
+  padding:3px;
+  border-radius:15px;
+}
+
+.cell{
+  border-radius:5px;
+  background:#fff0f8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+}
+
+.wall{
+  background:#a875d9;
+}
+
+.player{
+  background:#ffafd3;
+}
+
+.goal{
+  background:#c7f5d9;
+}
+
+.maze-controls{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(3,55px);
+  justify-content:center;
+  gap:7px;
+}
+
+.maze-controls button{
+  width:55px;
+  height:45px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ff9fc9,#b99cff);
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.up{
+  grid-column:2;
+}
+
+.left{
+  grid-column:1;
+}
+
+.down{
+  grid-column:2;
+}
+
+.right{
+  grid-column:3;
+  grid-row:2;
+}
+
+#mazeMessage{
+  margin-top:15px;
+  font-weight:600;
+}
+
+/* VIDEOS */
+
+.video-container{
+  max-width:900px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+.video-card{
+  background:white;
+  padding:15px;
+  border-radius:25px;
+  box-shadow:0 12px 30px rgba(100,50,120,.12);
+}
+
+.video-card video{
+  width:100%;
+  border-radius:18px;
+}
+
+.video-card p{
+  padding:12px;
+  font-weight:600;
+  background:linear-gradient(90deg,#ff55a8,#9567ef);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* FOOTER */
+
+footer{
+  padding:50px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#ffc2df,#d9c5ff);
+  color:white;
+}
+
+footer h2{
+  font-family:'Pacifico',cursive;
+  font-size:35px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .cards-container{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .video-container{
+    grid-template-columns:1fr;
+  }
+
+  .flip-card{
+    height:230px;
+  }
+
+  .envelope-wrapper{
+    transform:scale(.9);
+  }
+}
+
+@media(max-width:480px){
+
+  .cards-container{
+    grid-template-columns:1fr;
+  }
+
+  .flip-card{
+    height:260px;
+  }
+
+  .envelope-wrapper{
+    transform:scale(.8);
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<div id="opening">
+
+  <div class="opening-content">
+
+    <div style="font-size:45px;">🌸 🤍 🌸</div>
+
+    <h1>
+      Happy Birthday<br>
+      Divuuu 💗
+    </h1>
+
+    <p>
+      I made something for you... :>
+    </p>
+
+    <button class="proceed-btn" onclick="startWebsite()">
+      ✨ Click to Proceed ✨
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- MAIN WEBSITE -->
+
+<main>
+
+<!-- INTRO -->
+
+<section id="intro">
+
+  <div class="intro-content">
+
+    <div style="font-size:55px;">
+      💗 ✨ 🌸
+    </div>
+
+    <h2>
+      For My Favourite Person
+    </h2>
+
+    <p>
+      Welcome to your little birthday corner, Divu :>
+      <br>
+      You've officially entered a website made by your very annoying girl.
+      😭💗
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CARDS -->
+
+<section>
+
+  <h2 class="section-title">
+    Six Little Things 💌
+  </h2>
+
+  <p class="section-subtitle">
+    Click each card hehe :>
+  </p>
+
+  <div class="cards-container">
+
+    <div class="flip-card" onclick="flipCard(this);confetti()">
+      <div class="flip-inner">
+
+        <div class="card-front">
+          <div class="placeholder">🌸</div>
+        </div>
+
+        <div class="card-back">
+          <h3>My Favourite</h3>
+          <p>
+            Somehow you became one of my favourite people
+            without me even realizing it. 💗
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="flip-card" onclick="flipCard(this);confetti()">
+      <div class="flip-inner">
+
+        <div class="card-front">
+          <div class="placeholder">💗</div>
+        </div>
+
+        <div class="card-back">
+          <h3>Thank You</h3>
+          <p>
+            Thank you for coming into my life and
+            giving me so many little moments to treasure.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="flip-card" onclick="flipCard(this);confetti()">
+      <div class="flip-inner">
+
+        <div class="card-front">
+          <div class="placeholder">🦋</div>
+        </div>
+
+        <div class="card-back">
+          <h3>Our Talks</h3>
+          <p>
+            I love our random conversations and
+            all the completely nonsense things we talk about. 😭
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="flip-card" onclick="flipCard(this);confetti()">
+      <div class="flip-inner">
+
+        <div class="card-front">
+          <div class="placeholder">⭐</div>
+        </div>
+
+        <div class="card-back">
+          <h3>You Matter</h3>
+          <p>
+            I hope you always remember that you're
+            important, appreciated and loved. 💗
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="flip-card" onclick="flipCard(this);confetti()">
+      <div class="flip-inner">
+
+        <div class="card-front">
+          <div class="placeholder">🍯</div>
+        </div>
+
+        <div class="card-back">
+          <h3>Memories</h3>
+          <p>
+            I want us to make a MILLION more memories
+            together. 😭💗
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="flip-card" onclick="flipCard(this);confetti()">
+      <div class="flip-inner">
+
+        <div class="card-front">
+          <div class="placeholder">🎀</div>
+        </div>
+
+        <div class="card-back">
+          <h3>One Thing</h3>
+          <p>
+            You're stuck with me now.
+            No refunds. No exchanges. No returns. 😭💗
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LETTER -->
+
+<section id="letter-section">
+
+  <h2 class="section-title">
+    A Letter For You 💌
+  </h2>
+
+  <p class="section-subtitle">
+    Open it, silly :>
+  </p>
+
+
+  <div class="envelope-wrapper" onclick="openEnvelope(this)">
+
+    <div class="letter-paper">
+
+      <h2>For My Divuuu ♡</h2>
+
+      <p>
+        Haapppppiesttt birthday my divuuu ;>💗
+      </p>
+
+      <p>
+        I love you honey 🍯😚<br>
+        I love you soo muchh :3
+      </p>
+
+      <p>
+        Tbh I don't even know where to start ARGHHHH lawl because
+        there are SOOO many things I want to say to you and my brain
+        is literally fighting me rn 😭😭.
+      </p>
+
+      <p>
+        Like how am I supposed to fit everything I feel into one
+        tiny message???
+      </p>
+
+      <p>
+        &lt;BAKA DIVU&gt; 😭💗
+      </p>
+
+      <p>
+        You habee become such a beautiful part of mi life man
+        (not prettier than me duh 🙄) and I'm genuinely so HEPIIII
+        and gratefulll that I got to meet you :>
+      </p>
+
+      <p>
+        Like seriously, who would've thought that one day some random
+        person would become THIS important to me 😭💗
+      </p>
+
+      <p>
+        You went from just being someone I talked to, to someone whose
+        messages I actually look forward to, someone I wanna tell
+        random stupid things to, someone I wanna annoy for absolutely
+        no reason, and someone I can't imagine not having in my life anymore.
+      </p>
+
+      <p>
+        Now you're trapped here man frfrfr 😭💗
+      </p>
+
+      <p>
+        I love our stupid conversations. I love when we randomly start
+        talking about the most nonsense things ever. Blehhhh.
+      </p>
+
+      <p>
+        Even the smallest conversations with you can make my day better :>
+        (unless those “ok” ones ofc 🙄😤)
+      </p>
+
+      <p>
+        I love how I can just be myself around you.
+        I don't have to pretend to be someone else.
+        I can be annoying, cheerful, clingy, weird and completely unserious
+        and somehow you are still here 😭😭💗
+      </p>
+
+      <p>
+        +100000999999 BOIFREN POINTS 🫵💗
+      </p>
+
+      <p>
+        I want us too makeee a MILLION more memories together 😭💗
+      </p>
+
+      <p>
+        So many more stupid jokes, random conversations, birthdays,
+        celebrations, festivals, random kawaii moments and all the
+        little things that make us us.
+      </p>
+
+      <p>
+        Even though we can't meet rn, I still hope that someday we'll
+        get to actually celebrate birthdays and festivals and smol
+        things together.
+      </p>
+
+      <p>
+        I really hope you realize how loved and appreciated you are today.
+      </p>
+
+      <p>
+        YOU ARE VERY VERY ESTRA SPECIAL TO ME 😭💗
+      </p>
+
+      <p>
+        Thank you for coming into my life.<br><br>
+        Thank you for all the little moments you have given me.<br><br>
+        Thank you for listening to my random nonsense.<br><br>
+        Thank you for putting up with my dramatic ass 😭<br><br>
+        Thank you for always making me smile.<br><br>
+        And thank you for becoming someone so incredibly precious to me.
+      </p>
+
+      <p style="text-align:center;font-size:18px;">
+        🍫🍦🌈<br>
+        I love you.<br>
+        I love you so much.<br>
+        I love you so soo much.<br>
+        I love you so soo sooo much.<br>
+        I love you so soo sooo soooo much.<br>
+        ♾️💗
+      </p>
+
+      <p>
+        You are stuck with my birthday paragraphs now.
+        No refund. No exchanges. No returns. 😭
+      </p>
+
+      <p>
+        Just remember one thing, okie?
+      </p>
+
+      <p>
+        I want you to feel loved today.
+        I really, REALLY want you to be genuinely happy because
+        I love you and you deserve that.
+      </p>
+
+      <p style="text-align:center;font-size:20px;">
+        HAPPIEST BIRTHDAYYYYY MY DIVUUUUU 😭💗🎂🎀
+        <br><br>
+        MWAAAHHHH 💗
+      </p>
+
+    </div>
+
+
+    <div class="envelope">
+
+      <div class="envelope-heart">
+        💗
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<section>
+
+  <h2 class="section-title">
+    Our Little Soundtrack 🎵
+  </h2>
+
+  <p class="section-subtitle">
+    A tiny music corner for you 💗
+  </p>
+
+  <div class="music-box">
+
+    <div class="music-icon">
+      🎧💗
+    </div>
+
+    <h3>
+      Our Birthday Song
+    </h3>
+
+    <audio id="audioPlayer" controls>
+      <source src="" type="audio/mpeg">
+    </audio>
+
+    <br><br>
+
+    <button class="music-btn"
+      onclick="document.getElementById('audioPlayer').play()">
+      ▶ Play Song
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- MAZE GAME -->
+
+<section>
+
+  <h2 class="section-title">
+    Birthday Maze 🧩💗
+  </h2>
+
+  <p class="section-subtitle">
+    Help Divu reach the birthday cake! 🎂
+  </p>
+
+  <div class="maze-box">
+
+    <div id="maze"></div>
+
+    <div class="maze-controls">
+
+      <button class="up" onclick="movePlayer(0,-1)">
+        ↑
+      </button>
+
+      <button class="left" onclick="movePlayer(-1,0)">
+        ←
+      </button>
+
+      <button class="down" onclick="movePlayer(0,1)">
+        ↓
+      </button>
+
+      <button class="right" onclick="movePlayer(1,0)">
+        →
+      </button>
+
+    </div>
+
+    <p id="mazeMessage">
+      Reach the 🎂!
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- VIDEOS -->
+
+<section>
+
+  <h2 class="section-title">
+    Little Memories 🎬
+  </h2>
+
+  <p class="section-subtitle">
+    Some things I wanted you to see 💗
+  </p>
+
+  <div class="video-container">
+
+    <div class="video-card">
+
+      <video controls>
+        <source src="" type="video/mp4">
+      </video>
+
+      <p>
+        A little memory ♡
+      </p>
+
+    </div>
+
+
+    <div class="video-card">
+
+      <video controls>
+        <source src="" type="video/mp4">
+      </video>
+
+      <p>
+        Another little memory 💗
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h2>
+    Happy Birthday, Divuuu 💗
+  </h2>
+
+  <p>
+    You're stuck with me now. ♡
+  </p>
+
+  <div style="font-size:30px;margin-top:15px;">
+    🌸 🤍 💗 ⭐ 🎀 ✨
+  </div>
+
+</footer>
+
+</main>
+
+
+<script>
+
+/* OPEN WEBSITE */
+
+function startWebsite(){
+
+  const opening=document.getElementById("opening");
+
+  createLilies();
+
+  setTimeout(function(){
+    opening.classList.add("hide");
+  },3500);
+
+}
+
+
+/* FLOWERS */
+
+function createLilies(){
+
+  for(let i=0;i<18;i++){
+
+    const lily=document.createElement("div");
+
+    lily.className="lily";
+
+    lily.innerHTML=Math.random()>0.5?"🌸":"🤍";
+
+    lily.style.left=Math.random()*100+"vw";
+
+    lily.style.fontSize=
+      (20+Math.random()*25)+"px";
+
+    lily.style.animationDuration=
+      (3+Math.random()*4)+"s";
+
+    document.body.appendChild(lily);
+
+    setTimeout(function(){
+      lily.remove();
+    },8000);
+
+  }
+
+}
+
+
+/* FLIP CARDS */
+
+function flipCard(card){
+
+  card.classList.toggle("flipped");
+
+}
+
+
+/* CONFETTI */
+
+function confetti(){
+
+  for(let i=0;i<25;i++){
+
+    const piece=document.createElement("div");
+
+    piece.className="confetti";
+
+    piece.innerHTML=
+      ["💗","✨","🌸","🎀","⭐"]
+      [Math.floor(Math.random()*5)];
+
+    piece.style.left="50%";
+    piece.style.top="50%";
+
+    piece.style.setProperty(
+      "--x",
+      (Math.random()*500-250)+"px"
+    );
+
+    piece.style.setProperty(
+      "--y",
+      (Math.random()*500-250)+"px"
+    );
+
+    document.body.appendChild(piece);
+
+    setTimeout(function(){
+      piece.remove();
+    },2500);
+
+  }
+
+}
+
+
+/* ENVELOPE */
+
+function openEnvelope(envelope){
+
+  envelope.classList.toggle("open");
+
+}
+
+
+/* MAZE */
+
+const mazeMap=[
+  [0,1,0,0,0,0,1,0],
+  [0,1,0,1,1,0,1,0],
+  [0,0,0,1,0,0,0,0],
+  [1,1,0,1,0,1,1,0],
+  [0,0,0,0,0,0,1,0],
+  [0,1,1,1,1,0,1,0],
+  [0,0,0,0,1,0,0,0],
+  [1,1,1,0,0,0,1,0]
+];
+
+let player={
+  x:0,
+  y:0
+};
+
+const goal={
+  x:7,
+  y:7
+};
+
+
+function drawMaze(){
+
+  const maze=document.getElementById("maze");
+
+  maze.innerHTML="";
+
+  for(let y=0;y<8;y++){
+
+    for(let x=0;x<8;x++){
+
+      const cell=document.createElement("div");
+
+      cell.className="cell";
+
+      if(mazeMap[y][x]===1){
+        cell.classList.add("wall");
+      }
+
+      if(player.x===x && player.y===y){
+
+        cell.classList.add("player");
+
+        cell.innerHTML="💗";
+
+      }
+
+      else if(goal.x===x && goal.y===y){
+
+        cell.classList.add("goal");
+
+        cell.innerHTML="🎂";
+
+      }
+
+      maze.appendChild(cell);
+
+    }
+
+  }
+
+}
+
+
+function movePlayer(dx,dy){
+
+  const newX=player.x+dx;
+  const newY=player.y+dy;
+
+  if(
+    newX<0 ||
+    newX>=8 ||
+    newY<0 ||
+    newY>=8
+  ){
+    return;
+  }
+
+  if(mazeMap[newY][newX]===1){
+
+    document.getElementById("mazeMessage").textContent=
+      "BONK 😭 That's a wall!";
+
+    return;
+  }
+
+  player.x=newX;
+  player.y=newY;
+
+  drawMaze();
+
+  if(
+    player.x===goal.x &&
+    player.y===goal.y
+  ){
+
+    document.getElementById("mazeMessage").textContent=
+      "YOU MADE ITTTT 🎂💗 HAPPY BIRTHDAY DIVUUU!! 🎀✨";
+
+    confetti();
+
+  }
+
+}
+
+
+/* KEYBOARD CONTROLS */
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key==="ArrowUp"){
+    movePlayer(0,-1);
+  }
+
+  if(event.key==="ArrowDown"){
+    movePlayer(0,1);
+  }
+
+  if(event.key==="ArrowLeft"){
+    movePlayer(-1,0);
+  }
+
+  if(event.key==="ArrowRight"){
+    movePlayer(1,0);
+  }
+
+});
+
+
+drawMaze();
+
+</script>
+
+</body>
+</html>
